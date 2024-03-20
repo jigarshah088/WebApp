@@ -21,6 +21,14 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+
+- task: WhiteSource@21
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
+    projectName: 'firstProj'
+    
+    scanReportTimeout: 10
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -32,7 +40,3 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-- task: WhiteSource@21
-  inputs:
-    cwd: '$(System.DefaultWorkingDirectory)'
-    projectName: 'firstProj'
